@@ -24,9 +24,9 @@ const Footwear = () => {
   const [wishlistItems, setWishlistItems] = useState(new Set());
 
   useEffect(() => {
-    // http://localhost:5000/api/footwears
+    // http://localhost:8080/api/footwears
     //
-    fetch("https://my-ecommm.vercel.app/api/footwears")
+    fetch("http://localhost:8080/api/footwears")
       .then((res) => res.json())
       .then((json) => setFootwearData(json))
       .catch((err) => console.error("Error fetching Footwears:", err));
@@ -97,7 +97,7 @@ const Footwear = () => {
     }
 
     // Send to backend
-    fetch("https://my-ecommm.vercel.app/api/wishlist", {
+    fetch("http://localhost:8080/api/wishlist", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
