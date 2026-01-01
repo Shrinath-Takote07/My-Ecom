@@ -1,7 +1,3 @@
-
-
-// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 import React, { useState, useEffect, useCallback } from "react";
 import {
   ChevronLeft,
@@ -12,7 +8,6 @@ import {
   Eye,
   Tag,
 } from "lucide-react";
-import API_ENDPOINTS from "../../config/api";
 
 const Bags = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -27,13 +22,13 @@ const Bags = () => {
 
   useEffect(() => {
     // Fetch products
-    fetch(API_ENDPOINTS.bags)
+    fetch("https://my-ecom12.onrender.com/api/Bags")
       .then((res) => res.json())
       .then((json) => setBagsData(json))
       .catch((err) => console.error("Error fetching bags:", err));
 
     // Fetch wishlist items to populate local state
-    fetch(API_ENDPOINTS.wishlist)
+    fetch("https://my-ecom12.onrender.com/api/wishlist")
       .then((res) => res.json())
       .then((json) => {
         if (Array.isArray(json)) {
@@ -123,7 +118,7 @@ const Bags = () => {
     }
 
     // Send to backend
-    fetch(API_ENDPOINTS.wishlist, {
+    fetch("https://my-ecom12.onrender.com/api/wishlist", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
