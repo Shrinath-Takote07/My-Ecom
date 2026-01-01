@@ -23,13 +23,13 @@ const Fashion = () => {
   const [wishlistItems, setWishlistItems] = useState(new Set());
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/Fashions")
+    fetch("https://my-ecom12.onrender.com/api/Fashions")
       .then((res) => res.json())
       .then((json) => setFashionData(json))
       .catch((err) => console.error("Error fetching products:", err));
 
     // Fetch existing wishlist
-    fetch("http://localhost:8080/api/wishlist")
+    fetch("https://my-ecom12.onrender.com/api/wishlist")
       .then((res) => res.json())
       .then((json) => {
         if (Array.isArray(json)) {
@@ -96,7 +96,7 @@ const Fashion = () => {
     }
 
     // Send to backend
-    fetch("http://localhost:8080/api/wishlist", {
+    fetch("https://my-ecom12.onrender.com/api/wishlist", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
