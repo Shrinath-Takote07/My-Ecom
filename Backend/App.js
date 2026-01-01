@@ -30,19 +30,19 @@ const app = express();
 // ));
 
 
-app.use(cors({
-  origin: [
-    "https://my-ecom-six.vercel.app",
-    // "http://localhost:3000"   // add this for local dev
-    "https://my-ecom-3rr8skcaz-shrinath-takote07s-projects.vercel.app"
-  ],
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true
-}));
+// app.use(cors({
+//   origin: [
+//     "https://my-ecom-six.vercel.app",
+//     // "http://localhost:3000"   // add this for local dev
+//     "https://my-ecom-3rr8skcaz-shrinath-takote07s-projects.vercel.app"
+//   ],
+//   methods: ["GET", "POST", "PUT", "DELETE"],
+//   credentials: true
+// }));
 
-app.use(express.json());
+// app.use(express.json());
 
-app.options("*", cors());
+// app.options("*", cors());
 
 
 
@@ -594,10 +594,19 @@ app.get("/api/recommendations/:id", async (req, res) => {
 
 // --- Serve Frontend ---
 
+// app.use(express.static(path.join(_dirname, "/my-project/dist")));
+
+// app.get(/(.*)/, (_, res) => {
+//   res.sendFile(path.resolve(_dirname, "my-project", "dist", "index.html"));
+// });
+
+
 app.use(express.static(path.join(_dirname, "/my-project/dist")));
 
-app.get(/(.*)/, (_, res) => {
-  res.sendFile(path.resolve(_dirname, "my-project", "dist", "index.html"));
+// Catch-all route to serve index.html (SPA support)
+// Use regex to avoid "Missing parameter name" error with newer path-to-regexp versions
+app.get(/^(?!\/api).+/, (req, res) => {
+  res.sendFile(path.resolve(_dirname, "my-project", "dist", "index.html"))
 });
 
 // Start server
