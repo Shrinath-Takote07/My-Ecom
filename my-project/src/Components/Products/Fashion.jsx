@@ -13,7 +13,6 @@ import {
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import API_ENDPOINTS from "../../config/api";
 
 const Fashion = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -24,13 +23,13 @@ const Fashion = () => {
   const [wishlistItems, setWishlistItems] = useState(new Set());
 
   useEffect(() => {
-    fetch(API_ENDPOINTS.fashions)
+    fetch("http://localhost:8080/api/Fashions")
       .then((res) => res.json())
       .then((json) => setFashionData(json))
       .catch((err) => console.error("Error fetching products:", err));
 
     // Fetch existing wishlist
-    fetch(API_ENDPOINTS.wishlist)
+    fetch("http://localhost:8080/api/wishlist")
       .then((res) => res.json())
       .then((json) => {
         if (Array.isArray(json)) {
@@ -97,7 +96,7 @@ const Fashion = () => {
     }
 
     // Send to backend
-    fetch(API_ENDPOINTS.wishlist, {
+    fetch("http://localhost:8080/api/wishlist", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
