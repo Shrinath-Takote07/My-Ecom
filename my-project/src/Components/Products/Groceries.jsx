@@ -19,7 +19,7 @@ const Groceries = () => {
 
   // Fetch groceries data
   useEffect(() => {
-    fetch("http://localhost:8080/api/Groceries")
+    fetch("https://my-ecom12.onrender.com/api/Groceries")
       .then((res) => res.json())
       .then((json) => setGroceriesData(json))
       .catch((err) => console.error("Error fetching Groceries:", err));
@@ -85,7 +85,7 @@ const Groceries = () => {
     }
 
     // Send to backend
-    fetch("http://localhost:8080/api/wishlist", {
+    fetch("https://my-ecom12.onrender.com/api/wishlist", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
