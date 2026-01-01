@@ -1,6 +1,3 @@
-
-
-// ////////////////////////////////////////////////////////////////////////////////////////////////////////////// Neew code
 import React, { useState, useEffect, useCallback } from "react";
 import {
   ChevronLeft,
@@ -11,7 +8,6 @@ import {
   Eye,
   Tag,
 } from "lucide-react";
-import API_ENDPOINTS from "../../config/api";
 
 const Beauty = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -22,13 +18,13 @@ const Beauty = () => {
   const [notification, setNotification] = useState(null);
 
   useEffect(() => {
-    fetch(API_ENDPOINTS.beauty)
+    fetch("https://my-ecom12.onrender.com/api/Beauty")
       .then((res) => res.json())
       .then((json) => setBeautyData(json))
       .catch((err) => console.error("Error fetching Beauty:", err));
 
     // Fetch existing wishlist to populate local state
-    fetch(API_ENDPOINTS.wishlist)
+    fetch("https://my-ecom12.onrender.com/api/wishlist")
       .then((res) => res.json())
       .then((json) => {
         if (Array.isArray(json)) {
@@ -122,7 +118,7 @@ const Beauty = () => {
     }
 
     // Send to backend
-    fetch(API_ENDPOINTS.wishlist, {
+    fetch("https://my-ecom12.onrender.com/api/wishlist", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
