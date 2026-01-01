@@ -28,7 +28,7 @@ const Cart = () => {
   // http://localhost:5000/api/carts
 
   useEffect(() => {
-    fetch("https://my-ecommm.vercel.app/api/carts")
+    fetch("https://my-ecom12.onrender.com/api/carts")
       .then((res) => res.json())
       .then((json) => setCartItems(json))
       .catch((err) => console.error("Error fetching users:", err));
@@ -57,7 +57,7 @@ const Cart = () => {
       });
     } else {
       // Add new item to cart via API
-      fetch("https://my-ecommm.vercel.app/api/cart", {
+      fetch("https://my-ecom12.onrender.com/api/cart", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -121,7 +121,7 @@ const Cart = () => {
   // Remove item from cart
   const removeFromCart = (id) => {
     // Delete from backend using Mongo ID (_id)
-    fetch(`https://my-ecommm.vercel.app/api/carts/${id}`, {
+    fetch(`https://my-ecom12.onrender.com/api/carts/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -163,7 +163,7 @@ const Cart = () => {
       // However backend cartRoutes doesn't seem to have PUT /:id currently. 
       // I will implement PUT in backend in next step if needed. 
       // For now fix URL.
-      fetch(`https://my-ecommm.vercel.app/api/carts/${id}`, {
+      fetch(`https://my-ecom12.onrender.com/api/carts/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
