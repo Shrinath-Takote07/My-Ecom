@@ -26,7 +26,7 @@ const Footwear = () => {
   useEffect(() => {
     // http://localhost:8080/api/footwears
     //
-    fetch("http://localhost:8080/api/footwears")
+    fetch("https://my-ecom12.onrender.com/api/footwears")
       .then((res) => res.json())
       .then((json) => setFootwearData(json))
       .catch((err) => console.error("Error fetching Footwears:", err));
