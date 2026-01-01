@@ -5,6 +5,7 @@ import {
   Trash2,
   ShoppingCart,
   Eye,
+  
   Bell,
   Share2,
   Tag,
@@ -27,7 +28,6 @@ import {
   Shield,
   Sparkles,
 } from "lucide-react";
-import API_ENDPOINTS from "../config/api";
 
 const WishlistPage = () => {
   const [wishlistItems, setWishlistItems] = useState([]);
@@ -44,7 +44,7 @@ const WishlistPage = () => {
 
   // Function to fetch wishlist items
   const fetchWishlistItems = () => {
-    fetch(API_ENDPOINTS.wishlist)
+    fetch("https://my-ecom12.onrender.com/api/wishlist")
       .then((res) => res.json())
       .then((json) => setWishlistItems(json))
       .catch((err) => console.error("Error fetching wishlist items:", err));
@@ -52,7 +52,7 @@ const WishlistPage = () => {
 
   // Function to fetch recommended items
   const fetchRecommendedItems = () => {
-    fetch(API_ENDPOINTS.recommendations)
+    fetch("https://my-ecom12.onrender.com/api/recommendations")
       .then((res) => res.json())
       .then((json) => setRecommendedItems(json))
       .catch((err) => console.error("Error fetching recommendations:", err));
@@ -77,7 +77,7 @@ const WishlistPage = () => {
     setCartSuccessMessage("");
 
     try {
-      const response = await fetch(API_ENDPOINTS.carts, {
+      const response = await fetch("https://my-ecom12.onrender.com/api/carts", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -126,7 +126,7 @@ const WishlistPage = () => {
   // Function to add item to wishlist
   const addToWishlist = async (item) => {
     try {
-      const response = await fetch(API_ENDPOINTS.wishlist, {
+      const response = await fetch("https://my-ecom12.onrender.com/api/wishlist", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -172,7 +172,7 @@ const WishlistPage = () => {
         const item = wishlistItems.find((i) => i.id === id);
         if (!item) return null;
 
-        const response = await fetch(API_ENDPOINTS.carts, {
+        const response = await fetch("https://my-ecom12.onrender.com/api/carts", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -272,7 +272,7 @@ const WishlistPage = () => {
     try {
       const promises = selectedItems.map(async (id) => {
         const response = await fetch(
-          API_ENDPOINTS.wishlistById(id),
+          `http://localhost:8080/api/wishlist/${id}`,
           {
             method: "DELETE",
             headers: {
@@ -304,7 +304,7 @@ const WishlistPage = () => {
   // Remove single item
   const removeItem = async (id) => {
     try {
-      const response = await fetch(API_ENDPOINTS.wishlistById(id), {
+      const response = await fetch(`https://my-ecom12.onrender.com/api/wishlist/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
