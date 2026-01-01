@@ -8,9 +8,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "concurrently -n \"BACKEND,FRONTEND\" -c \"bgBlue.bold,bgMagenta.bold\" \"npm start\" \"npm run client --prefix my-project\"",
-    "build": "npm install && npm install --prefix my-project && npm run build --prefix my-project",
-    "start": "nodemon Backend/App.js"
+    "dev": "nodemon Backend/App.js",
+    "start": "node Backend/App.js",
+    "build": "npm install && npm install --prefix my-project && npm run build --prefix my-project"
   },
   "dependencies": {
     "cors": "^2.8.5",
