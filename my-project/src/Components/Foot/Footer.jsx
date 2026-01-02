@@ -361,7 +361,7 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="text-center md:text-left">
               <p className="text-gray-400 text-sm">
-                © {new Date().getFullYear()} CLASSYSHOP. All rights reserved.
+                 {new Date().getFullYear()} 
               </p>
               <div className="flex flex-wrap gap-4 justify-center md:justify-start mt-2">
                 {footerLinks.legal.map((link, index) => (
